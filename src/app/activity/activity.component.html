@@ -1,0 +1,24 @@
+<section>
+  <div class="content-wrapper">
+    <mat-label>Enter Activity name </mat-label>
+    <input matInput type="text" [(ngModel)]="defActTitle"><br>
+    <mat-label>Enter Activity duration </mat-label>
+    <input matInput type="text" [(ngModel)]="defActTime"><br><br>
+    <button (click)="newActivity(defActTitle,defActTime)">
+      <mat-icon>add</mat-icon> add Activity
+    </button>
+  </div>
+</section>
+<section>
+  <mat-grid-list cols="4" rowHeight="100" >
+    <mat-grid-tile *ngFor="let activity of activities">
+      <mat-card class="example-card">
+        <mat-card-title>{{activity.title}}</mat-card-title>
+        <mat-card-content>{{activity.time}} minutes</mat-card-content>
+        <mat-card-footer >{{activity.id}}</mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+</section>
