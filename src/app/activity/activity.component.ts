@@ -55,6 +55,7 @@ export class ActivityComponent {
   removeActivity(targetId:number){
     this.activities.forEach( (item, index) => {
       if(item.id === targetId)
+       this.activities.splice(index,1)
        item.visible=false;
     });
  }
