@@ -18,6 +18,7 @@ export class ActivityComponent {
   inputValue:string="665";
   defActTitle:string="tbd";
   defActTime:number=0;
+  activitiesFromDB:activity[]=[];
   activities: activity[] = [
     {
       id:1,
@@ -44,6 +45,12 @@ export class ActivityComponent {
     let newActivity={id:nr,title:name,time:time};
     this.activities.push(newActivity)
     this.activityService.addActivity(newActivity);
+  }
+  getActivities(){
+    this.activityService.getActivities().subscribe(result=>
+      {
+        this.activitiesFromDB = result;
+      });
   }
 
 }
