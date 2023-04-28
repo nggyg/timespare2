@@ -9,30 +9,27 @@ import { ActivityService } from '../Services/activity.service';
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent {
+[x: string]: any;
   @Input() activity: activity | null = null;
   @Output() edit = new EventEmitter<activity>();
   constructor(private activityService: ActivityService) {
 
   }
   uid: number = 3;
-  inputValue:string="665";
-  defActTitle:string="tbd";
+  inputValue:string=""
+  inputValue2:number=0
+  defActTitle:string="tbd"
   defActTime:number=0;
   activitiesFromDB:activity[]=[];
-  activities: activity[] = [
-    {
-      id:1,
-      title: 'cycling',
-      time: 30
-    },
-    {
-      id:2,
-      title: 'reading',
-      time:60
-    }
-  ];
+  activities: activity[] = this.getActivities();
+ 
   getUID():number{
-    return this.uid++;
+    let newID:number=0
+    this.activities.forEach( (item, index) => {
+      if(item.id >= newID)
+       newID=item.id;
+    });
+    return newID+1;
   }
   setDefTitle(newTitle:string):void{
     this.defActTitle=newTitle;
@@ -42,15 +39,24 @@ export class ActivityComponent {
   }
   newActivity(name:string,time:number):void{
     let nr=this.getUID();
-    let newActivity={id:nr,title:name,time:time};
+    let newActivity={id:nr,title:name,time:time,visible:true};
     this.activities.push(newActivity)
     this.activityService.addActivity(newActivity);
   }
-  getActivities(){
+  getActivities(): activity[]{
+    let res:any=[];
     this.activityService.getActivities().subscribe(result=>
       {
-        this.activitiesFromDB = result;
+        this.activities= result;
+        res=result;
       });
+      return res;
   }
+  removeActivity(targetId:number){
+    this.activities.forEach( (item, index) => {
+      if(item.id === targetId)
+       item.visible=false;
+    });
+ }
 
 }

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { activity } from '../model/activity';
-import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore'
+import { addDoc, collection, collectionData, Firestore ,deleteDoc,UpdateData} from '@angular/fire/firestore'
+import { updateDoc } from 'firebase/firestore';
+import { firebaseApp$ } from '@angular/fire/app';
 
 @Injectable({
     providedIn: 'root'
@@ -20,4 +22,5 @@ import { addDoc, collection, collectionData, Firestore } from '@angular/fire/fir
         const myCollection = collection(this.fs, 'activities')
         addDoc(myCollection, student);
       }
+    
   }

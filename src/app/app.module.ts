@@ -16,6 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { FormsModule } from '@angular/forms';
 import { MatCard } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MatCard } from '@angular/material/card';
     MatGridListModule,
     MatFormFieldModule,
     FormsModule,
+    MatDividerModule
   ],
   
   providers: [],

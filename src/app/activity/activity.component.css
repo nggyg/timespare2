@@ -1,20 +1,46 @@
 .example-card{
     background-color: aquamarine;
-    width: 200;
-    height: 140;
-    max-width: 400 px;
+    width: 300;
+    height: 180;
+    max-width: 800 px;
 }
 
 .label{
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
 }
 .section{
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+
 }
 .button{
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
 }
-.mat-grid-tile{
-    width: 1500;
-    height: 1050;
+
+.example-form-filed{
+    background-color: blueviolet;
+}
+html{
+    background-color: lightblue;
+}
+body{
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content-wrapper{
+    margin: auto 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+button{
+    margin: auto 35%;
 }
